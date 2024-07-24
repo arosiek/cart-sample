@@ -13,10 +13,14 @@
 
 ## run tests:
 
-- unit / integration:
-    - inside container: `composer test` or simply `docker exec -it php_sample_cart bash -c "composer test"`
-- static tests (phpstan)
-    - inside container: `composer analyse` or simply `docker exec -it php_sample_cart bash -c "composer analyse"`
+- unit
+    -  `docker exec -it php_sample_cart bash -c "vendor/bin/phpunit --configuration phpunit --testsuite unit"`
+- integration
+    -  `docker exec -it php_sample_cart bash -c "vendor/bin/phpunit --configuration phpunit --testsuite integration"`
+- unit + integration:
+    - `docker exec -it php_sample_cart bash -c "composer test"`
+- static tests (`phpstan`)
+    - `docker exec -it php_sample_cart bash -c "composer analyse"`
 
 ## assumptions:
 
