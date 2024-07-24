@@ -13,6 +13,7 @@ class BasketFactory
         return new RegularBasket(
             $this->createProductCatalogueFilterable(),
             $this->createShippingCostCalculator(),
+            $this->createDiscountOfferCalculator(),
         );
     }
 
@@ -31,5 +32,10 @@ class BasketFactory
     private function createShippingCostCalculator(): ShippingCostCalculator
     {
         return new BaseShippingCostCalculator();
+    }
+
+    private function createDiscountOfferCalculator(): DiscountOfferCalculator
+    {
+        return new BaseDiscountOfferCalculator();
     }
 }

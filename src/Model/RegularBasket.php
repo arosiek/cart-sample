@@ -13,6 +13,7 @@ final class RegularBasket implements Basket
     public function __construct(
         private readonly ProductCatalogueFilterable $productCatalogue,
         private ShippingCostCalculator $shippingCostCalculator,
+        private DiscountOfferCalculator $discountOfferCalculator,
     )
     {
     }
@@ -30,6 +31,7 @@ final class RegularBasket implements Basket
             $total += round($item->getPrice(), 2);
         }
 
+        $total -= round($this->discountOfferCalculator->calculate($this->items), 2);
         $total += round($this->shippingCostCalculator->calculate($total), 2);
 
         return round($total, 2);
