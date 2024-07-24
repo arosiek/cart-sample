@@ -42,9 +42,9 @@ final class RegularBasketTest extends TestCase
     {
         return [
             'Simple basket with free shipping' => ['productCodes' => ['G01', 'G01', 'G01', 'G01'], 'total' => 99.8],
-//            'Simple basket with high delivery costs' => ['productCodes' => ['B01', 'G01'], 'total' => 37.85],
+            'Simple basket with high delivery costs' => ['productCodes' => ['B01', 'G01'], 'total' => 37.85],
 //            'Simple basket with medium delivery costs and second price half offer' => ['productCodes' => ['R01', 'R01'], 'total' => 54.37],
-//            'Simple basket with medium delivery costs' => ['productCodes' => ['R01', 'G01'], 'total' => 60.85],
+            'Simple basket with medium delivery costs' => ['productCodes' => ['R01', 'G01'], 'total' => 60.85],
 //            'Simple basket with high delivery costs and second price half offer' => ['productCodes' => ['B01', 'B01', 'R01', 'R01', 'R01'], 'total' => 98.27],
         ];
     }

@@ -12,6 +12,7 @@ class BasketFactory
     {
         return new RegularBasket(
             $this->createProductCatalogueFilterable(),
+            $this->createShippingCostCalculator(),
         );
     }
 
@@ -25,5 +26,10 @@ class BasketFactory
     private function createProductRepository(): ProductRepository
     {
         return new JsonProductRepository();
+    }
+
+    private function createShippingCostCalculator(): ShippingCostCalculator
+    {
+        return new BaseShippingCostCalculator();
     }
 }

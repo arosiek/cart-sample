@@ -1,5 +1,10 @@
 # Sample cart project
 
+## assumptions:
+
+- json file is used as products database
+- price precision is 2 (like 10.99)
+
 ## requirements
 
 - docker
@@ -21,8 +26,3 @@
     - `docker exec -it php_sample_cart bash -c "composer test"`
 - static tests (`phpstan`)
     - `docker exec -it php_sample_cart bash -c "composer analyse"`
-
-## assumptions:
-
-- json file is used as products database
--
