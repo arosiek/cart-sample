@@ -1,0 +1,82 @@
+name: Cart sample PHP CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  phpstan:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: [ 8.3 ]
+
+    services:
+      docker:
+        image: docker:20.10
+        options: --privileged
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, xml
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse -l max
+
+  unit-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: [ 8.3 ]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, xml
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: Run Unit Tests
+        run: vendor/bin/phpunit --configuration phpunit.xml --testsuite 'Unit Tests'
+
+  integration-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: [ 8.3 ]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, xml
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: Run Integration Tests
+        run: vendor/bin/phpunit --configuration phpunit.xml --testsuite 'Integration Tests'
+

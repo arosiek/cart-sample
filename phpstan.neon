@@ -1,0 +1,11 @@
+parameters:
+    phpVersion: 80309
+
+    level: max
+
+    paths:
+        - src
+        - tests
+
+    parallel:
+          maximumNumberOfProcesses: 5

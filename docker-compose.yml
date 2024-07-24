@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  php:
+    build:
+      context: ./docker/php
+    container_name: php_sample_cart
+    volumes:
+      - ./:/var/www
+      - ./docker/php/conf.d:/usr/local/etc/php/conf.d
+    ports:
+      - "9001:9000"
+      - "9003:9003"  # Expose the Xdebug port
+    environment:
+      XDEBUG_SESSION: PHPSTORM
+      XDEBUG_LOG: /tmp/xdebug.log
+      XDEBUG_CLIENT_HOST: host.docker.internal
+      XDEBUG_CLIENT_PORT: 9003
+    networks:
+      - sample_cart_network
+
+networks:
+  sample_cart_network:
+    driver: bridge
