@@ -1,16 +1,17 @@
 # Sample cart project
 
 ## sample usage
+
 ```
 <?php
 
-    $basket = (new BasketFactory())->createRegularBasket();
-    $basket->add('G01');
-    $basket->add('R01');
-    $basket->add('R01');
-    $basket->add('R01');
+    $simpleCart = new SimpleCartFacade();
+    $simpleCart->add('G01');
+    $simpleCart->add('R01');
+    $simpleCart->add('R01');
+    $simpleCart->add('R01');
     
-    $total = $basket->total();
+    $total = $simpleCart->total();
 ```
 
 ## assumptions:
@@ -30,15 +31,15 @@
 ## instalation
 
 1. `docker-compose up -d`
-2. inside container `composer install` 
+2. inside container `composer install`
    or simply `docker exec -it php_sample_cart bash -c "composer install"`
 
 ## run tests:
 
 - unit
-    -  `docker exec -it php_sample_cart bash -c "vendor/bin/phpunit --configuration phpunit --testsuite 'Unit Tests'"`
+    - `docker exec -it php_sample_cart bash -c "vendor/bin/phpunit --configuration phpunit.xml --testsuite 'Unit Tests'"`
 - integration
-    -  `docker exec -it php_sample_cart bash -c "vendor/bin/phpunit --configuration phpunit --testsuite 'Integration Tests'"`
+    - `docker exec -it php_sample_cart bash -c "vendor/bin/phpunit --configuration phpunit.xml --testsuite 'Integration Tests'"`
 - unit + integration:
     - `docker exec -it php_sample_cart bash -c "composer test"`
 - static tests (`phpstan`)

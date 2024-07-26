@@ -1,20 +1,21 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Unit\Tests\Model;
+namespace App\Unit\Tests\Itegration\App;
 
-use App\Model\Basket;
-use App\Model\BasketFactory;
+use App\App\CartFacade;
+use App\App\SimpleCartFacade;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-final class RegularBasketTest extends TestCase
+class SimpleCartFacadeTest extends TestCase
 {
-    private Basket $sut;
+
+    private CartFacade $sut;
 
     protected function setUp(): void
     {
-        $this->sut = (new BasketFactory())->createRegularBasket();
+        $this->sut = new SimpleCartFacade();
 
         parent::setUp();
     }
