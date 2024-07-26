@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Tests\Model;
+namespace App\Tests\Unit\Model;
 
 use App\Entity\Product;
 use App\Exception\ProductNotFoundException;
